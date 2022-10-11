@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "myflix",
+    "slug": "myflix",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "myflix"
+}
