@@ -10,7 +10,6 @@ export default function App() {
   const startLoading = async () => {
     await Font.loadAsync(Ionicons.font);
     await Asset.loadAsync(require("./public/img/car.jpg"));
-    await Asset.loadAsync(require("./public/img/car.jpg"));
     await Image.prefetch;
   };
   if (!ready) {
