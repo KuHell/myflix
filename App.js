@@ -17,7 +17,7 @@ export default function App() {
       <AppLoading
         onFinish={onFinish}
         startAsync={startLoading}
-        onError={console.error}
+        // onError={console.error}
       />
     );
   }
