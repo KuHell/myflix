@@ -3,11 +3,14 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Movies from "../screens/Movies";
 import Search from "../screens/Search";
 import Tv from "../screens/Tv";
-import { View, Text } from "react-native";
+import { View, Text, useColorScheme } from "react-native";
+// import { useColorScheme } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
+  const isTheme = useColorScheme();
+
   return (
     <Tab.Navigator
       initialRouteName="Movies"
