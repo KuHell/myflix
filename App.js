@@ -23,6 +23,7 @@ export default function App() {
       await assets;
       // 로딩 화면 출력 위해 2초 동안 로딩 출력
       // await new Promise((resolve) => setTimeout(resolve, 2000));
+      console.log("2초 후");
     } catch (e) {
       console.warn(e);
     } finally {
@@ -30,10 +31,9 @@ export default function App() {
     }
   };
 
-  // appIsReady true 로 바뀌면 바로 로딩을 끔
-  const onLayoutRootView = useCallback(async () => {
+  useEffect(() => {
     if (appIsReady) {
-      await SplashScreen.hideAsync();
+      SplashScreen.hideAsync();
     }
   }, [appIsReady]);
 
