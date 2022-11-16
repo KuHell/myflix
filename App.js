@@ -22,7 +22,7 @@ export default function App() {
       await Font.loadAsync(Ionicons.font);
       await assets;
       // 로딩 화면 출력 위해 2초 동안 로딩 출력
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // await new Promise((resolve) => setTimeout(resolve, 2000));
     } catch (e) {
       console.warn(e);
     } finally {
