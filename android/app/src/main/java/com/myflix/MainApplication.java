@@ -1,6 +1,6 @@
 package com.myflix;
 
-import android.os.Bundle;
+// import android.os.Bundle;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -30,10 +30,10 @@ public class MainApplication extends Application implements ReactApplication {
       return BuildConfig.DEBUG;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-      super.onCreate(null);
-    }
+    // @Override
+    // protected void onCreate(Bundle savedInstanceState) {
+    //   super.onCreate(null);
+    // }
 
     @Override
     protected List<ReactPackage> getPackages() {

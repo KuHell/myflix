@@ -5,6 +5,8 @@ import * as Font from "expo-font";
 import { Asset, useAssets } from "expo-asset";
 import { View, Text } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
+import Tabs from "./navigation/Tabs";
+import { NavigationContainer } from "@react-navigation/native";
 
 //리소스를 가져오는 동안 스플래시 화면을 계속 표시합니다.
 SplashScreen.preventAutoHideAsync();
@@ -40,12 +42,8 @@ export default function App() {
   }, []);
 
   return !appIsReady || !assets ? null : (
-    <View
-      style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-      onLayout={onLayoutRootView}
-    >
-      <Text>SplashScreen Demo! 👋</Text>
-      <Entypo name="rocket" size={30} />
-    </View>
+    <NavigationContainer>
+      <Tabs />
+    </NavigationContainer>
   );
 }
