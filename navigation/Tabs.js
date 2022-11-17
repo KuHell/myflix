@@ -34,9 +34,9 @@ const Tabs = () => {
     >
       <Tab.Screen
         name="Movies"
-        component={Stack}
+        component={Movies}
         options={{
-          headerShown: false,
+          // headerShown: false,
           tabBarIcon: ({ focused, color, size }) => {
             console.log(focused, color, size);
             return (

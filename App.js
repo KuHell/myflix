@@ -12,6 +12,7 @@ import {
   DefaultTheme,
 } from "@react-navigation/native";
 import Stack from "./navigation/Stack";
+import Root from "./navigation/Root";
 
 //리소스를 가져오는 동안 스플래시 화면을 계속 표시합니다.
 SplashScreen.preventAutoHideAsync();
@@ -49,8 +50,9 @@ export default function App() {
 
   return !appIsReady || !assets ? null : (
     <NavigationContainer theme={isTheme ? DarkTheme : DefaultTheme}>
-      <Tabs />
+      {/* <Tabs /> */}
       {/* <Stack /> */}
+      <Root />
     </NavigationContainer>
   );
 }
