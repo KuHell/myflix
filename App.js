@@ -3,10 +3,14 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import * as Font from "expo-font";
 import { Asset, useAssets } from "expo-asset";
-import { View, Text } from "react-native";
+import { View, Text, useColorScheme } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
 import Tabs from "./navigation/Tabs";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  DarkTheme,
+  DefaultTheme,
+} from "@react-navigation/native";
 
 //리소스를 가져오는 동안 스플래시 화면을 계속 표시합니다.
 SplashScreen.preventAutoHideAsync();
@@ -14,6 +18,7 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
   const [assets] = useAssets([require("./public/img/car.jpg")]);
+  const isTheme = useColorScheme() === "light";
 
   // 데이터 수집 함수
   const prepare = async () => {
@@ -42,7 +47,7 @@ export default function App() {
   }, []);
 
   return !appIsReady || !assets ? null : (
-    <NavigationContainer>
+    <NavigationContainer theme={isTheme ? DarkTheme : DefaultTheme}>
       <Tabs />
     </NavigationContainer>
   );
