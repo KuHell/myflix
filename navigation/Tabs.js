@@ -5,6 +5,7 @@ import Search from "../screens/Search";
 import Tv from "../screens/Tv";
 import { View, Text, useColorScheme } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import Stack from "./Stack";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,8 +34,9 @@ const Tabs = () => {
     >
       <Tab.Screen
         name="Movies"
-        component={Movies}
+        component={Stack}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused, color, size }) => {
             console.log(focused, color, size);
             return (

@@ -13,7 +13,7 @@ const Stack = () => {
         headerBackTitleVisible: false, // 뒤로가기 버튼옆에 전title표시
         // headerShown: false,                 // header titme 제거
         headerTintColor: "#ffa801", // title color
-        presentation: "modal", // modal창 처럼 화면전환
+        // presentation: "modal", // modal창 처럼 화면전환
 
         // styles
         tabBarStyle: { backgroundColor: isTheme ? "#1e272e" : "#fff" },

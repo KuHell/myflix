@@ -49,8 +49,8 @@ export default function App() {
 
   return !appIsReady || !assets ? null : (
     <NavigationContainer theme={isTheme ? DarkTheme : DefaultTheme}>
-      {/* <Tabs /> */}
-      <Stack />
+      <Tabs />
+      {/* <Stack /> */}
     </NavigationContainer>
   );
 }
