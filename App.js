@@ -6,13 +6,11 @@ import { Asset, useAssets } from "expo-asset";
 import { View, Text, useColorScheme } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
 import Tabs from "./navigation/Tabs";
-import {
-  NavigationContainer,
-  DarkTheme,
-  DefaultTheme,
-} from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import Stack from "./navigation/Stack";
 import Root from "./navigation/Root";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./styled";
 
 //리소스를 가져오는 동안 스플래시 화면을 계속 표시합니다.
 SplashScreen.preventAutoHideAsync();
@@ -20,7 +18,7 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
   const [assets] = useAssets([require("./public/img/car.jpg")]);
-  const isTheme = useColorScheme() === "light";
+  const isTheme = useColorScheme() === "dark";
 
   // 데이터 수집 함수
   const prepare = async () => {
@@ -46,13 +44,17 @@ export default function App() {
 
   useEffect(() => {
     prepare();
+    console.log("isTheme: ", isTheme);
   }, []);
 
   return !appIsReady || !assets ? null : (
-    <NavigationContainer theme={isTheme ? DarkTheme : DefaultTheme}>
-      {/* <Tabs /> */}
-      {/* <Stack /> */}
-      <Root />
-    </NavigationContainer>
+    <ThemeProvider theme={isTheme ? darkTheme : lightTheme}>
+      {/* <NavigationContainer theme={isTheme ? DarkTheme : DefaultTheme}> */}
+      <NavigationContainer>
+        {/* <Tabs /> */}
+        {/* <Stack /> */}
+        <Root />
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }

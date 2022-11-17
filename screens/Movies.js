@@ -2,9 +2,16 @@ import React from "react";
 // import { View, Text, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 
-const Title = styled.Text``;
+const Title = styled.Text`
+  color: ${(props) => props.theme.textColor};
+`;
 
-const Btn = styled.TouchableOpacity``;
+const Btn = styled.TouchableOpacity`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.theme.mainBgColor};
+`;
 
 const Movies = ({ navigation: { navigate } }) => {
   return (
@@ -12,7 +19,6 @@ const Movies = ({ navigation: { navigate } }) => {
       onPress={() => {
         navigate("Stack", { screen: "One" });
       }}
-      style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
     >
       <Title>Movies</Title>
     </Btn>
