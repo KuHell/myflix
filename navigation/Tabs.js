@@ -9,7 +9,7 @@ import { Ionicons } from "@expo/vector-icons";
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
-  const isTheme = useColorScheme() === "light";
+  const isTheme = useColorScheme() === "dark";
 
   return (
     <Tab.Navigator
