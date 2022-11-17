@@ -9,17 +9,20 @@ import { View, Text, useColorScheme } from "react-native";
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
-  const isTheme = useColorScheme();
+  const isTheme = useColorScheme() === "light";
 
   return (
     <Tab.Navigator
       initialRouteName="Movies"
       screenOptions={{
-        tabBarStyle: { backgroundColor: "tomato" },
-        headerRight: () => {
-          <View>
-            <Text>Hello</Text>
-          </View>;
+        tabBarStyle: { backgroundColor: isTheme ? "#1e272e" : "#fff" },
+        tabBarActiveTintColor: isTheme ? "#ffa801" : "#1e272e",
+        tabBarInactiveTintColor: isTheme ? "#d2dae2" : "#d2dae2",
+        headerStyle: {
+          backgroundColor: isTheme ? "#1e272e" : "#fff",
+        },
+        headerTitleStyle: {
+          color: isTheme ? "#fff" : "#1e272e",
         },
       }}
     >
