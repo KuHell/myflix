@@ -8,19 +8,43 @@ import Slide from "../components/Slide";
 const API_KEY = '1224c35a1ddd3e3ddd3fdd67d6b5aace'
 
 const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({ navigation }) => {
-  const isTheme = useColorScheme() === "dark";
   const [loading, setLoading] = useState(false);
   const [nowPlaying, setNowPlaying] = useState([])
+  const [upcoming, setUpcoming] = useState([])
+  const [trending, setTrending] = useState([])
+
+  const getTrending = async() => {
+    const { results } = await (
+      await fetch(
+        `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=1&region=KR`
+      )
+    ).json()
+    setTrending(results)
+  }
+
+  const getUpcoming = async() => {
+    const { results } = await (
+      await fetch(
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1&region=KR`
+      )
+    ).json()
+    setUpcoming(results)
+  }
+
   const getNowPlaying = async () => {
     const { results }: any = await(
       await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1&region=KR`)
     ).json();
     setNowPlaying(results)
+  }
+
+  const getData = async () => {
+    await Promise.all(getNowPlaying(), getUpcoming(), getTrending())
     setLoading(true)
   }
 
   useEffect(()=>{
-    getNowPlaying();
+    getData();
   },[])
 
   return loading ?(
