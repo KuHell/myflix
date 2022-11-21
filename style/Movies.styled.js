@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 export const { height: screenHeight } = Dimensions.get("window");
 
 export const Title = styled.Text`
+  // <{ isTheme: boolean } >
   font-size: 16px;
   font-weight: 600;
   color: white;
@@ -16,10 +17,6 @@ export const Btn = styled.TouchableOpacity`
 `;
 
 export const Container = styled.ScrollView``;
-
-export const View = styled.View`
-  flex: 1;
-`;
 
 export const Loader = styled.View`
   flex: 1;
@@ -43,8 +40,8 @@ export const Wrapper = styled.View`
 `;
 
 export const Column = styled.View`
-  width: 40%;
-  margin-left: 15px;
+  width: 50%;
+  margin-left: 20px;
 `;
 
 export const Overview = styled.Text`
