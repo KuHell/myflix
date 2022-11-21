@@ -15,6 +15,9 @@ const Tabs = () => {
   return (
     <Tab.Navigator
       initialRouteName="Movies"
+      sceneContainerStyle={{
+        backgroundColor: isTheme ? "#1e272e" : "#fff",
+      }}
       screenOptions={{
         tabBarStyle: { backgroundColor: isTheme ? "#1e272e" : "#fff" },
         tabBarActiveTintColor: isTheme ? "#ffa801" : "#1e272e",

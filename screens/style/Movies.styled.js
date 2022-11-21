@@ -11,13 +11,20 @@ export const Btn = styled.TouchableOpacity`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.theme.mainBgColor};
 `;
 
-export const Container = styled.ScrollView`
-  background-color: ${(props) => props.theme.mainBgColor};
-`;
+export const Container = styled.ScrollView``;
 
 export const View = styled.View`
+  flex: 1;
+`;
+
+export const Loader = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const BgImg = styled.Image`
   flex: 1;
 `;
