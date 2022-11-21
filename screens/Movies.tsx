@@ -1,18 +1,26 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, ScrollView } from "react-native";
+import { ActivityIndicator, RefreshControl, ScrollView } from "react-native";
 import Swiper from "react-native-swiper";
 import { Container, screenHeight, Loader, ListTitle, Movie, TrendingScroll, TrendingTitle, TrendingVotes, ListContainer, HMovie, HColumn, Overview, Release, ComingSoonTitle } from "../style/Movies.styled";
 import Slide from "../components/Slide";
 import Poster from "../components/Poster";
+import Votes from "../components/Votes";
 
 const API_KEY = '1224c35a1ddd3e3ddd3fdd67d6b5aace'
 
 const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({ navigation }) => {
+  const [refreshing, setRefreshing] = useState(false)
   const [loading, setLoading] = useState(false);
   const [nowPlaying, setNowPlaying] = useState([])
   const [upcoming, setUpcoming] = useState([])
   const [trending, setTrending] = useState([])
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await getData();
+    setRefreshing(false);
+  }
 
   const getTrending = async() => {
     const { results } = await (
@@ -49,7 +57,7 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({ navigation })
   },[])
 
   return loading ?(
-    <Container>
+    <Container refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
       <Swiper 
       loop
       horizontal
@@ -80,9 +88,7 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({ navigation })
                   {movie.original_title.slice(0, 13)}
                   {movie.original_title.length > 13 ? "..." : null}
                 </TrendingTitle>
-                {movie.vote_average > 0 
-                ? <TrendingVotes>⭐️ {movie.vote_average}/10</TrendingVotes> 
-                : `Coming soon`}
+                <Votes votes={movie.vote_average} />
               </Movie>
             ))
           }

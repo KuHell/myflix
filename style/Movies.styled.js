@@ -103,10 +103,6 @@ export const Release = styled.Text`
   font-size: 12px;
 `;
 
-export const ComingSoonTitle = styled.Text`
+export const ComingSoonTitle = styled(ListTitle)`
   margin-bottom: 30px;
-  margin-left: 30px;
-  color: white;
-  font-size: 18px;
-  font-weight: 600;
 `;
