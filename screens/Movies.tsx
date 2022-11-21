@@ -1,9 +1,10 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, useColorScheme } from "react-native";
+import { ActivityIndicator, ScrollView } from "react-native";
 import Swiper from "react-native-swiper";
-import { Container, screenHeight, Loader } from "../style/Movies.styled";
+import { Container, screenHeight, Loader, ListTitle, Movie, TrendingScroll, TrendingTitle, TrendingVotes } from "../style/Movies.styled";
 import Slide from "../components/Slide";
+import Poster from "../components/Poster";
 
 const API_KEY = '1224c35a1ddd3e3ddd3fdd67d6b5aace'
 
@@ -56,7 +57,7 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({ navigation })
       showsButtons={false}
       showsPagination={false}
       autoplayTimeout={3.5}
-      containerStyle={{ width: '100%', height: screenHeight / 4 }}>
+      containerStyle={{ marginBottom: 30, width: '100%', height: screenHeight / 4 }}>
         {nowPlaying.map((movie: any) => (
           <Slide 
             key={movie.id}
@@ -68,6 +69,21 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({ navigation })
           />
         ))}
       </Swiper>
+      <ListTitle>Trending Movies</ListTitle>
+      <TrendingScroll contentContainerStyle={{paddingLeft: 30}} horizontal showsHorizontalScrollIndicator={false}>
+        {
+          trending.map((movie: any) => (
+            <Movie>
+              <Poster path={movie.poster_path}/>
+              <TrendingTitle>
+                {movie.original_title.slice(0, 13)}
+                {movie.original_title.length > 13 ? "..." : null}
+              </TrendingTitle>
+              <TrendingVotes>⭐️ {movie.vote_average}/10</TrendingVotes>
+            </Movie>
+          ))
+        }
+      </TrendingScroll>
     </Container>
   ): <Loader><ActivityIndicator/></Loader>;
 };
