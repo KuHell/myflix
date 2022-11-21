@@ -4,7 +4,9 @@ import styled from "styled-components/native";
 export const { height: screenHeight } = Dimensions.get("window");
 
 export const Title = styled.Text`
-  color: ${(props) => props.theme.textColor};
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
 `;
 
 export const Btn = styled.TouchableOpacity`
@@ -25,6 +27,29 @@ export const Loader = styled.View`
   align-items: center;
 `;
 
-export const BgImg = styled.Image`
-  flex: 1;
+export const BgImg = styled.Image``;
+
+export const Poster = styled.Image`
+  width: 100px;
+  height: 160px;
+  border-radius: 5px;
 `;
+
+export const Wrapper = styled.View`
+  flex-direction: row;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Column = styled.View`
+  width: 40%;
+  margin-left: 15px;
+`;
+
+export const Overview = styled.Text`
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.8);
+`;
+
+export const Votes = styled(Overview)``;
