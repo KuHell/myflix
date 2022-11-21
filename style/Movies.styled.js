@@ -57,13 +57,17 @@ export const Column = styled.View`
 `;
 
 export const Overview = styled.Text`
+  color: white;
   margin-top: 8px;
+  width: 80%;
+  opacity: 0.8;
   color: rgba(255, 255, 255, 0.8);
 `;
 
 export const Votes = styled(Overview)``;
 
 export const ListTitle = styled.Text`
+  /* margin-top: 30px; */
   margin-left: 30px;
   color: white;
   font-size: 18px;
@@ -71,9 +75,38 @@ export const ListTitle = styled.Text`
 `;
 
 export const Movie = styled.View`
-  margin-right: 30px;
+  margin-right: 15px;
 `;
 
 export const TrendingScroll = styled.ScrollView`
   margin-top: 20px;
+`;
+
+export const ListContainer = styled.View`
+  margin-bottom: 30px;
+`;
+
+export const HMovie = styled.View`
+  margin-bottom: 30px;
+  padding: 0px 30px;
+  flex-direction: row;
+`;
+
+export const HColumn = styled.View`
+  margin-left: 15px;
+  width: 80%;
+`;
+
+export const Release = styled.Text`
+  margin-vertical: 10px;
+  color: white;
+  font-size: 12px;
+`;
+
+export const ComingSoonTitle = styled.Text`
+  margin-bottom: 30px;
+  margin-left: 30px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
 `;

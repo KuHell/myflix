@@ -22,13 +22,11 @@ export default function App() {
 
   // 데이터 수집 함수
   const prepare = async () => {
-    console.log("데이터 수집 중");
     try {
       await Font.loadAsync(Ionicons.font);
       await assets;
       // 로딩 화면 출력 위해 2초 동안 로딩 출력
       // await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log("2초 후");
     } catch (e) {
       console.warn(e);
     } finally {
@@ -44,7 +42,6 @@ export default function App() {
 
   useEffect(() => {
     prepare();
-    console.log("isTheme: ", isTheme);
   }, []);
 
   return !appIsReady || !assets ? null : (
