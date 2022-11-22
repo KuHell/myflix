@@ -78,7 +78,7 @@ export const Movie = styled.View`
   margin-right: 15px;
 `;
 
-export const TrendingScroll = styled.ScrollView`
+export const TrendingScroll = styled.FlatList`
   margin-top: 20px;
 `;
 
