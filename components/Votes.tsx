@@ -5,12 +5,8 @@ interface VotesProps {
   votes: number;
 }
 
-const Votes: React.FC<VotesProps> = ({votes}) => {
-  return (
-    votes > 0 
-    ? <Text>⭐️ {votes}/10</Text> 
-    : `Coming soon`
-  )
-}
+const Votes: React.FC<VotesProps> = ({ votes }) => (
+  <Text>{votes > 0 ? `⭐️ ${votes}/10` : `Coming soon`}</Text>
+);
 
 export default Votes

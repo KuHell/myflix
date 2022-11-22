@@ -1,9 +1,27 @@
-import React from 'react'
+import React from "react";
+import { Movie, Title } from "../style/Movies.styled";
+import Poster from "./Poster";
+import Votes from "./Votes";
 
-const VMedia = () => {
-  return (
-    <div>VMedia</div>
-  )
+interface VMediaProps {
+  posterPath: string;
+  originalTitle: string;
+  voteAverage: number;
 }
 
-export default VMedia
+const VMedia: React.FC<VMediaProps> = ({
+  posterPath,
+  originalTitle,
+  voteAverage,
+}) => (
+  <Movie>
+    <Poster path={posterPath} />
+    <Title>
+      {originalTitle.slice(0, 13)}
+      {originalTitle.length > 13 ? "..." : null}
+    </Title>
+    <Votes votes={voteAverage} />
+  </Movie>
+);
+
+export default VMedia;

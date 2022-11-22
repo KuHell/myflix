@@ -6,6 +6,8 @@ import { Container, screenHeight, Loader, ListTitle, Movie, TrendingScroll, Tren
 import Slide from "../components/Slide";
 import Poster from "../components/Poster";
 import Votes from "../components/Votes";
+import HMedia from "../components/HMedia";
+import VMedia from "../components/VMedia";
 
 const API_KEY = '1224c35a1ddd3e3ddd3fdd67d6b5aace'
 
@@ -82,30 +84,25 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({ navigation })
         <TrendingScroll contentContainerStyle={{paddingLeft: 30}} horizontal showsHorizontalScrollIndicator={false}>
           {
             trending.map((movie: any) => (
-              <Movie>
-                <Poster path={movie.poster_path}/>
-                <TrendingTitle>
-                  {movie.original_title.slice(0, 13)}
-                  {movie.original_title.length > 13 ? "..." : null}
-                </TrendingTitle>
-                <Votes votes={movie.vote_average} />
-              </Movie>
+              <VMedia
+                key={movie.id}
+                posterPath={movie.poster_path}
+                originalTitle={movie.original_title}
+                voteAverage={movie.vote_average}
+              />
             ))
           }
         </TrendingScroll>
       </ListContainer>
       <ComingSoonTitle>Coming soon</ComingSoonTitle>
       {upcoming.map((movie: any) => (
-        <HMovie key={movie.id}>
-          <Poster path={movie.poster_path}/>
-          <HColumn>
-            <TrendingTitle>{movie.original_title.slice(0, 13)}</TrendingTitle>
-            <Release>
-              {new Date(movie.release_date).toLocaleDateString("ko", {month: 'long', day: 'numeric', year: 'numeric'})}
-            </Release>
-            <Overview>{movie.overview !== '' && movie.overview.length > 80 ? `${movie.overview.slice(0, 80)}...`: movie.overview}</Overview>
-          </HColumn>
-        </HMovie>
+        <HMedia 
+          key={movie.id}
+          posterPath={movie.poster_path}
+          originalTitle={movie.original_title}
+          overview={movie.overview}
+          releaseDate={movie.release_date}
+        />
       ))}
     </Container>
   ): <Loader><ActivityIndicator/></Loader>;
