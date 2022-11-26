@@ -18,7 +18,7 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
   const [assets] = useAssets([require("./public/img/car.jpg")]);
-  const isTheme = useColorScheme() === "dark";
+  const isTheme = useColorScheme() === "light";
 
   // 데이터 수집 함수
   const prepare = async () => {
